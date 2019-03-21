@@ -31,11 +31,24 @@ public class MyDeque<E>{
    }
   public E removeFirst(){
     E ans = getFirst();
-    ans = (ans - 1)%size;
+    data[start]=null;
+    if(start==data.length-1){
+      start=0;
+    }
+    else{
+      start++;
+    }
     return ans;
    }
   public E removeLast(){
     E ans = getLast();
+    data[end]=null;
+    if(end==0){
+      end=data.length-1;
+    }
+    else{
+      end--;
+    }
     return ans;
    }
   public E getFirst(){
