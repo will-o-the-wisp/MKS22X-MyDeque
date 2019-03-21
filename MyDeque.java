@@ -5,9 +5,15 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    start = 0;
+    end = data.length-1;
+    size = data.length;
   }
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
+    start = 0;
+    end = data.length-1;
+    size = data.length;
   }
   public int size(){
     return size;
@@ -15,16 +21,22 @@ public class MyDeque<E>{
   public String toString(){
     return "";
    }
-  public void addFirst(E element){
+  private void resize(){
 
-   }
+  }
+  public void addFirst(E element){
+      data[start]=element;
+  }
   public void addLast(E element){
    }
   public E removeFirst(){
-    return null;
+    E ans = getFirst();
+    ans = (ans - 1)%size;
+    return ans;
    }
   public E removeLast(){
-    return null;
+    E ans = getLast();
+    return ans;
    }
   public E getFirst(){
     return data[start];
