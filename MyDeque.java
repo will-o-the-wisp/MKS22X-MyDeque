@@ -27,7 +27,7 @@ public class MyDeque<E>{
       }
     }
     else{
-      for(int i=start;i<size;i++){
+      for(int i=start;i<data.length;i++){
         ans+=E.toString();
         ans+=" ";
       }
@@ -40,12 +40,21 @@ public class MyDeque<E>{
   }
   private void resize(){
     E[] newdata = (E[]) new Object[size*2];
-    //for()
+    if(start<end){
+      for(int i=0;i<size;i++){
+        newdata[i]=
+      }
+    }
+    else{
+
+    }
   }
   public void addFirst(E element){
       data[start]=element;
+      size++;
   }
   public void addLast(E element){
+      size++;
    }
   public E removeFirst(){
     E ans = getFirst();
@@ -56,6 +65,7 @@ public class MyDeque<E>{
     else{
       start++;
     }
+    size--;
     return ans;
    }
   public E removeLast(){
@@ -67,6 +77,7 @@ public class MyDeque<E>{
     else{
       end--;
     }
+    size--;
     return ans;
    }
   public E getFirst(){
