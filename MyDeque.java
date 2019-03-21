@@ -19,10 +19,28 @@ public class MyDeque<E>{
     return size;
   }
   public String toString(){
-    return "";
-   }
+    String ans = "";
+    if(start<end){
+      for(int i=start;i<end+1;i++){
+        ans+=E.toString();
+        ans+=" ";
+      }
+    }
+    else{
+      for(int i=start;i<size;i++){
+        ans+=E.toString();
+        ans+=" ";
+      }
+      for(int i=0;i<end+1;i++){
+        ans+=E.toString();
+        ans+=" ";
+      }
+    }
+    return ans;
+  }
   private void resize(){
-
+    E[] newdata = (E[]) new Object[size*2];
+    //for()
   }
   public void addFirst(E element){
       data[start]=element;
