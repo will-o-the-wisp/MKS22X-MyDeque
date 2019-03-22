@@ -1,3 +1,4 @@
+import java.util.*;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
@@ -7,13 +8,13 @@ public class MyDeque<E>{
     data = (E[])new Object[10];
     start = 0;
     end = data.length-1;
-    size = data.length;
+    size = 0;
   }
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
     start = 0;
     end = data.length-1;
-    size = data.length;
+    size = 0;
   }
   public int size(){
     return size;
@@ -22,24 +23,30 @@ public class MyDeque<E>{
     String ans = "";
     if(start<end){
       for(int i=start;i<end+1;i++){
-        ans+=E.toString();
-        ans+=" ";
+        if(data[i]!=null){
+          ans+=data[i].toString();
+          ans+=" ";
+        }
       }
     }
     else{
       for(int i=start;i<data.length;i++){
-        ans+=E.toString();
-        ans+=" ";
+        if(data[i]!=null){
+          ans+=data[i].toString();
+          ans+=" ";
+        }
       }
       for(int i=0;i<end+1;i++){
-        ans+=E.toString();
-        ans+=" ";
+        if(data[i]!=null){
+          ans+=data[i].toString();
+          ans+=" ";
+        }
       }
     }
     return ans;
   }
   private void resize(){
-    E[] newdata = (E[]) new Object[size*2];
+  /*  E[] newdata = (E[]) new Object[size*2];
     if(start<end){
       for(int i=0;i<size;i++){
         newdata[i]=
@@ -48,6 +55,7 @@ public class MyDeque<E>{
     else{
 
     }
+    */
   }
   public void addFirst(E element){
       data[start]=element;
@@ -81,9 +89,15 @@ public class MyDeque<E>{
     return ans;
    }
   public E getFirst(){
+    if(size==0){
+      throw new NoSuchElementException();
+    }
     return data[start];
   }
   public E getLast(){
+    if(size==0){
+      throw new NoSuchElementException();
+    }
     return data[end];
   }
 }
