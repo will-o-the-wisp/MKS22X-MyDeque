@@ -7,13 +7,13 @@ public class MyDeque<E>{
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
-    end = data.length-1;
+    end = 0;
     size = 0;
   }
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
     start = 0;
-    end = data.length-1;
+    end = 0;
     size = 0;
   }
   public int size(){
@@ -61,6 +61,15 @@ public class MyDeque<E>{
       if(element==null){
         throw new NullPointerException();
       }
+      if(size==data.length){
+        resize();
+      }
+      if(start==0){
+        start==data.length-1;
+      }
+      else{
+        start--;
+      }
       data[start]=element;
       size++;
   }
@@ -68,6 +77,16 @@ public class MyDeque<E>{
       if(element==null){
         throw new NullPointerException();
       }
+      if(size==data.length){
+        resize();
+      }
+      if(end==data.length-1){
+        end=0;
+      }
+      else{
+        end++;
+      }
+      data[end]=element;
       size++;
    }
   public E removeFirst(){
