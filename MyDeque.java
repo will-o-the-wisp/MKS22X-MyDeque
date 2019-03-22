@@ -2,8 +2,12 @@ import java.util.*;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
-
-  @SuppressWarnings("unchecked")
+   public static void main(String[]args){
+      MyDeque a = new MyDeque();
+      a.addLast("hi");
+      System.out.println(a);
+   }
+                          @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
@@ -20,14 +24,15 @@ public class MyDeque<E>{
     return size;
   }
   public String toString(){
-    String ans = "[";
-    if(start<end){
+    if(size==0){
+      return "{}";
+    }
+    String ans = "{";
+    if(start<=end){
       for(int i=start;i<end+1;i++){
-        if(data[i]!=null){
           ans+=data[i].toString();
           ans+=" ";
         }
-      }
     }
     else{
       for(int i=start;i<data.length;i++){
@@ -43,7 +48,7 @@ public class MyDeque<E>{
         }
       }
     }
-    return ans+"]";
+    return ans+"}";
   }
   private void resize(){
   /*  E[] newdata = (E[]) new Object[size*2];
@@ -65,13 +70,16 @@ public class MyDeque<E>{
         resize();
       }
       if(start==0){
-        start==data.length-1;
+        start=data.length-1;
       }
       else{
         start--;
       }
       data[start]=element;
       size++;
+      if(size==1){
+        end=start;
+      }
   }
   public void addLast(E element){
       if(element==null){
@@ -88,6 +96,9 @@ public class MyDeque<E>{
       }
       data[end]=element;
       size++;
+      if(size==1){
+        start=end;
+      }
    }
   public E removeFirst(){
     E ans = getFirst();

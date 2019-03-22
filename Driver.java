@@ -44,8 +44,8 @@ public class Driver {
 
 		// empty array
 
-		if (!deque.toString().equals("[]"))
-			out.add(message("[].toString()", "\"[]\"", "\""+deque.toString()+"\""));
+		if (!deque.toString().equals("{}"))
+			out.add(message("{}.toString()", "\"{}\"", "\""+deque.toString()+"\""));
 
 		if (deque.size() != 0)
 			out.add(message("{}.size()", 0, deque.size()));
