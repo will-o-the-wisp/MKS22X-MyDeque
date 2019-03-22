@@ -20,7 +20,7 @@ public class MyDeque<E>{
     return size;
   }
   public String toString(){
-    String ans = "";
+    String ans = "[";
     if(start<end){
       for(int i=start;i<end+1;i++){
         if(data[i]!=null){
@@ -43,7 +43,7 @@ public class MyDeque<E>{
         }
       }
     }
-    return ans;
+    return ans+"]";
   }
   private void resize(){
   /*  E[] newdata = (E[]) new Object[size*2];
@@ -58,10 +58,16 @@ public class MyDeque<E>{
     */
   }
   public void addFirst(E element){
+      if(element==null){
+        throw new NullPointerException();
+      }
       data[start]=element;
       size++;
   }
   public void addLast(E element){
+      if(element==null){
+        throw new NullPointerException();
+      }
       size++;
    }
   public E removeFirst(){
