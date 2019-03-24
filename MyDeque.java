@@ -7,7 +7,7 @@ public class MyDeque<E>{
       a.addLast("hi");
       System.out.println(a);
    }
-                          @SuppressWarnings("unchecked")
+  @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
     start = 0;
@@ -51,16 +51,39 @@ public class MyDeque<E>{
     return ans+"}";
   }
   private void resize(){
-  /*  E[] newdata = (E[]) new Object[size*2];
+    E[] newdata = (E[]) new Object[size*2];
     if(start<end){
       for(int i=0;i<size;i++){
-        newdata[i]=
+        newdata[i]=data[start+i];
       }
     }
     else{
-
+      /*for(int i=start;i<data.length;i++){
+          newdata[i-start]=data[i];
+        }
+      }
+      for(int i=0;i<end+1;i++){
+          newdata[i-(data.length]=data[i];
+        }
+      }
+      */
+      int i=start;
+      int j=0;
+      while(i<data.length){
+        newdata[j]=data[i];
+        i++;
+        j++;
+      }
+      i=0;
+      while(i<end+1){
+        newdata[j]=data[i];
+        i++;
+        j++;
+      }
     }
-    */
+    data=newdata;
+    start=0;
+    end=size-1;
   }
   public void addFirst(E element){
       if(element==null){
