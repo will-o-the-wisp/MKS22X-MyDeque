@@ -10,7 +10,31 @@ public class Calculator{
       }
     }
     public static double eval(String s){
-      return 0;
+      ArrayList<String> tokens = convert(s);
+      MyDeque<String> stack = new MyDeque<String>(3);
+      double ans=0;
+      int i=0;
+      while(i<tokens.size()){
+        if(tokens.get(i)="+"){
+
+        }
+        else if(tokens.get(i)="-"){
+
+        }
+        else if(tokens.get(i)="*"){
+
+        }
+        else if(tokens.get(i)="/"){
+
+        }
+        else if(tokens.get(i)="%"){
+
+        }
+        else{
+          stack.addFirst((double)tokens.add(i));
+        }
+      }
+      return ans;
     }
     private static ArrayList<String> convert(String s){
       ArrayList<String> ans = new ArrayList<String>();
