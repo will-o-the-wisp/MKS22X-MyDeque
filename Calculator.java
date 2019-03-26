@@ -4,37 +4,35 @@ public class Calculator{
      *Assume valid postfix notation, separated by spaces.
      */
     public static void main(String[] args){
-      ArrayList<String> a = convert("10 2.0 +");
-      for(int i=0;i<a.size();i++){
-        System.out.println(a.get(i));
-      }
+      //for(int i=0;i<)
+      //System.out.println(eval("3 4 +"));
     }
     public static double eval(String s){
       ArrayList<String> tokens = convert(s);
-      MyDeque<String> stack = new MyDeque<String>(3);
-      double ans=0;
+      MyDeque<Double> stack = new MyDeque<Double>(3);
       int i=0;
       while(i<tokens.size()){
-        if(tokens.get(i)="+"){
+        if(tokens.get(i)=="+"){
+          stack.addFirst(Double.valueOf(stack.removeFirst())+Double.valueOf(stack.removeFirst()));
+        }
+        else if(tokens.get(i)=="-"){
 
         }
-        else if(tokens.get(i)="-"){
+        else if(tokens.get(i)=="*"){
 
         }
-        else if(tokens.get(i)="*"){
+        else if(tokens.get(i)=="/"){
 
         }
-        else if(tokens.get(i)="/"){
-
-        }
-        else if(tokens.get(i)="%"){
+        else if(tokens.get(i)=="%"){
 
         }
         else{
-          stack.addFirst((double)tokens.add(i));
+          stack.addFirst(Double.valueOf(tokens.get(i)));
         }
+        i++;
       }
-      return ans;
+      return stack.getFirst();
     }
     private static ArrayList<String> convert(String s){
       ArrayList<String> ans = new ArrayList<String>();
