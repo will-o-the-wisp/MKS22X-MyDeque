@@ -15,25 +15,30 @@ public class Calculator{
       }
       return ans;
     }
-    public static double eval(String s){
-      ArrayList<String> tokens = convert(s);
-      System.out.println(alts(tokens));
+    public static double eval(String str){
+      ArrayList<String> tokens = convert(str);
       MyDeque<Double> stack = new MyDeque<Double>(3);
       for(int i=0;i<tokens.size();i++){
         if(tokens.get(i).equals("+")){
           stack.addFirst(Double.valueOf(stack.removeFirst())+Double.valueOf(stack.removeFirst()));
         }
         else if(tokens.get(i).equals("-")){
-          stack.addFirst(Double.valueOf(stack.removeFirst())-Double.valueOf(stack.removeFirst()));
+          Double s = new Double(stack.removeFirst());
+          Double f = new Double(stack.removeFirst());
+          stack.addFirst(f-s);
         }
         else if(tokens.get(i).equals("*")){
           stack.addFirst(Double.valueOf(stack.removeFirst())*Double.valueOf(stack.removeFirst()));
         }
         else if(tokens.get(i).equals("/")){
-          stack.addFirst(Double.valueOf(stack.removeFirst())/Double.valueOf(stack.removeFirst()));
+          Double s = stack.removeFirst();
+          Double f = stack.removeFirst();
+          stack.addFirst(f/s);
         }
         else if(tokens.get(i).equals("%")){
-          stack.addFirst(Double.valueOf(stack.removeFirst())%Double.valueOf(stack.removeFirst()));
+          Double s = stack.removeFirst();
+          Double f = stack.removeFirst();
+          stack.addFirst(f%s);
         }
         else{
           stack.addFirst(Double.valueOf(tokens.get(i)));
