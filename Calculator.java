@@ -7,30 +7,37 @@ public class Calculator{
       //for(int i=0;i<)
       //System.out.println(eval("3 4 +"));
     }
+    private static String alts(ArrayList<String> a){
+      String ans = "";
+      for(int i=0;i<a.size();i++){
+        ans+=a.get(i);
+        ans+=",";
+      }
+      return ans;
+    }
     public static double eval(String s){
       ArrayList<String> tokens = convert(s);
+      System.out.println(alts(tokens));
       MyDeque<Double> stack = new MyDeque<Double>(3);
-      int i=0;
-      while(i<tokens.size()){
-        if(tokens.get(i)=="+"){
+      for(int i=0;i<tokens.size();i++){
+        if(tokens.get(i).equals("+")){
           stack.addFirst(Double.valueOf(stack.removeFirst())+Double.valueOf(stack.removeFirst()));
         }
-        else if(tokens.get(i)=="-"){
-
+        else if(tokens.get(i).equals("-")){
+          stack.addFirst(Double.valueOf(stack.removeFirst())-Double.valueOf(stack.removeFirst()));
         }
-        else if(tokens.get(i)=="*"){
-
+        else if(tokens.get(i).equals("*")){
+          stack.addFirst(Double.valueOf(stack.removeFirst())*Double.valueOf(stack.removeFirst()));
         }
-        else if(tokens.get(i)=="/"){
-
+        else if(tokens.get(i).equals("/")){
+          stack.addFirst(Double.valueOf(stack.removeFirst())/Double.valueOf(stack.removeFirst()));
         }
-        else if(tokens.get(i)=="%"){
-
+        else if(tokens.get(i).equals("%")){
+          stack.addFirst(Double.valueOf(stack.removeFirst())%Double.valueOf(stack.removeFirst()));
         }
         else{
           stack.addFirst(Double.valueOf(tokens.get(i)));
         }
-        i++;
       }
       return stack.getFirst();
     }
